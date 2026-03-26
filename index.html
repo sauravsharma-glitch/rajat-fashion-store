@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Rajat Fashion Point | Premium Clothing Store</title>
+  <!-- Google Fonts + Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fefaf7;
+      color: #1e1e1e;
+      scroll-behavior: smooth;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    section {
+      padding: 70px 0;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 48px;
+      letter-spacing: -0.3px;
+    }
+    .section-title span {
+      background: linear-gradient(135deg, #c76b4a, #e09d7c);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 70px;
+      height: 3px;
+      background: #c76b4a;
+      margin: 14px auto 0;
+      border-radius: 4px;
+    }
+
+    /* Navbar with DM & WhatsApp Buttons */
+    .navbar {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #f0e2d8;
+    }
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 14px 28px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .logo h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #2c2c2c;
+    }
+    .logo h1 span {
+      color: #c76b4a;
+    }
+    .logo p {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #7a5a4a;
+      letter-spacing: 0.5px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 34px;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #2d2d2d;
+      transition: 0.2s;
+      font-size: 1rem;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: #c76b4a;
+    }
+    
+    /* DM & WhatsApp Button Styles */
+    .nav-action-buttons {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-left: 20px;
+    }
+    .dm-btn, .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+    .dm-btn {
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      background-size: 200% 200%;
+      color: white;
+    }
+    .dm-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(131, 58, 180, 0.3);
+      background-position: right center;
+    }
+    .whatsapp-btn {
+      background: #25d366;
+      color: white;
+    }
+    .whatsapp-btn:hover {
+      background: #20b859;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    }
+    .mobile-menu-btn {
+      display: none;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #2c2c2c;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(115deg, #f7ede6 0%, #f3e2d6 100%);
+      padding: 30px 0 50px;
+    }
+    .hero-grid {
+      display: flex;
+      align-items: center;
+      gap: 56px;
+      flex-wrap: wrap;
+    }
+    .hero-content {
+      flex: 1.1;
+    }
+    .hero-content .badge {
+      background: #c76b4a20;
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #b55a3a;
+      margin-bottom: 20px;
+    }
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: #2b241f;
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+      color: #4f3e34;
+      margin-bottom: 28px;
+      max-width: 90%;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: #c76b4a;
+      color: white;
+      padding: 12px 32px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover {
+      background: #a95538;
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      border: 1.5px solid #c76b4a;
+      background: transparent;
+      color: #c76b4a;
+      padding: 12px 30px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+    .btn-outline:hover {
+      background: #c76b4a10;
+      transform: translateY(-2px);
+    }
+    .hero-image {
+      flex: 1;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.2);
+    }
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .hero-image:hover img {
+      transform: scale(1.02);
+    }
+
+    /* Featured Collections */
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+      margin-top: 20px;
+    }
+    .featured-card {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    .featured-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.2);
+    }
+    .featured-img {
+      height: 300px;
+      overflow: hidden;
+    }
+    .featured-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .featured-card:hover .featured-img img {
+      transform: scale(1.08);
+    }
+    .featured-info {
+      padding: 22px 20px 24px;
+    }
+    .featured-info h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .featured-info p {
+      color: #6b4e3c;
+      font-size: 0.9rem;
+    }
+
+    /* Info Cards */
+    .info-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: space-between;
+    }
+    .info-card {
+      flex: 1;
+      background: #fef6f0;
+      border-radius: 28px;
+      padding: 30px;
+      transition: 0.3s;
+    }
+    .info-card:hover {
+      transform: translateY(-5px);
+    }
+    .info-card i {
+      font-size: 2rem;
+      color: #c76b4a;
+      margin-bottom: 15px;
+    }
+    .info-card h3 {
+      margin: 15px 0 10px;
+      font-size: 1.3rem;
+    }
+
+    /* Social Row */
+    .social-row {
+      text-align: center;
+      background: #f7ede6;
+      border-radius: 48px;
+      padding: 40px 20px;
+      margin: 40px 0;
+    }
+    .insta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #2c2c2c;
+      padding: 12px 32px;
+      border-radius: 60px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: 0.2s;
+    }
+    .insta-link:hover {
+      background: #c13584;
+      transform: scale(1.02);
+    }
+
+    /* Map */
+    .map-container {
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.1);
+      margin: 40px 0;
+    }
+
+    /* Footer */
+    footer {
+      background: #1e1916;
+      color: #ddd2ca;
+      padding: 40px 0 20px;
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 18px;
+        padding: 20px 0 12px;
+        text-align: center;
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .mobile-menu-btn {
+        display: block;
+      }
+      .nav-action-buttons {
+        margin-left: 0;
+        justify-content: center;
+        margin-top: 10px;
+      }
+      .hero-content h1 {
+        font-size: 2.4rem;
+      }
+      .info-cards {
+        flex-direction: column;
+      }
+    }
+    @media (max-width: 680px) {
+      .hero-grid {
+        flex-direction: column-reverse;
+      }
+      .hero-content p {
+        max-width: 100%;
+      }
+      .hero-content {
+        text-align: center;
+      }
+      .hero-buttons {
+        justify-content: center;
+      }
+      .dm-btn, .whatsapp-btn {
+        padding: 6px 14px;
+        font-size: 0.8rem;
+      }
+    }
+
+    /* Section */
+.new-collection {
+  padding: 60px 15px;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+.new-collection h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.new-collection .subtitle {
+  color: #777;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 10px;
+}
+
+/* Grid */
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* Card */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  transition: 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+/* Image */
+.img-box {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.img-box img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  transition: 0.4s;
+}
+
+.card:hover img {
+  transform: scale(1.08);
+}
+
+/* Badge */
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #000;
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 8px;
+  border-radius: 4px;
+}
+
+.badge.sale {
+  background: red;
+}
+
+/* Text */
+.card h3 {
+  margin: 12px 0 5px;
+  font-size: 18px;
+}
+
+.price {
+  color: #e63946;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+/* Button */
+.card button {
+  padding: 10px 18px;
+  border: none;
+  background: black;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  transition: 0.3s;
+}
+
+.card button:hover {
+  background: #e63946;
+}
+
+/* ========================= */
+/* 📱 MOBILE (0–576px) */
+/* ========================= */
+@media (max-width: 576px) {
+  .new-collection {
+    padding: 40px 10px;
+  }
+
+  .new-collection h2 {
+    font-size: 24px;
+  }
+
+  .img-box img {
+    height: 220px;
+  }
+}
+
+/* ========================= */
+/* 📲 TABLET (577px–992px) */
+/* ========================= */
+@media (min-width: 577px) and (max-width: 992px) {
+  .new-collection h2 {
+    font-size: 28px;
+  }
+
+  .img-box img {
+    height: 250px;
+  }
+}
+
+/* ========================= */
+/* 💻 LAPTOP (993px–1200px) */
+/* ========================= */
+@media (min-width: 993px) and (max-width: 1200px) {
+  .img-box img {
+    height: 270px;
+  }
+}
+
+/* ========================= */
+/* 🖥️ LARGE SCREENS (1200px+) */
+/* ========================= */
+@media (min-width: 1201px) {
+  .img-box img {
+    height: 300px;
+  }
+}
+
+/* ===== Base Section ===== */
+.main-section {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #ffffff, #f5f5f5);
+}
+
+/* ===== Container ===== */
+.brand-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/* ===== Text ===== */
+.brand-content {
+    flex: 1;
+}
+
+.brand-content h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.brand-content p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* ===== Button ===== */
+.shop-btn {
+    padding: 12px 30px;
+    border: none;
+    background: #000;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.shop-btn:hover {
+    background: #e30613;
+}
+
+/* ===== Image ===== */
+.brand-image {
+    flex: 1;
+    text-align: center;
+}
+
+.brand-image img {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+/* ===== Large Screens (1400px+) ===== */
+@media (min-width: 1400px) {
+    .brand-content h1 {
+        font-size: 56px;
+    }
+
+    .brand-content p {
+        font-size: 20px;
+    }
+}
+
+/* ===== Laptop (992px - 1399px) ===== */
+@media (max-width: 1399px) {
+    .brand-content h1 {
+        font-size: 42px;
+    }
+}
+
+/* ===== Tablet (768px - 991px) ===== */
+@media (max-width: 991px) {
+    .brand-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .brand-content h1 {
+        font-size: 34px;
+    }
+
+    .brand-content p {
+        font-size: 16px;
+    }
+
+    .brand-image img {
+        max-width: 380px;
+    }
+}
+
+/* ===== Mobile (576px - 767px) ===== */
+@media (max-width: 767px) {
+    .main-section {
+        padding: 60px 15px;
+    }
+
+    .brand-content h1 {
+        font-size: 28px;
+    }
+
+    .shop-btn {
+        padding: 10px 25px;
+        font-size: 14px;
+    }
+}
+
+/* ===== Small Mobile (<576px) ===== */
+@media (max-width: 575px) {
+    .main-section {
+        padding: 50px 10px;
+    }
+
+    .brand-content h1 {
+        font-size: 24px;
+    }
+
+    .brand-content p {
+        font-size: 14px;
+    }
+
+    .brand-image img {
+        max-width: 100%;
+        border-radius: 12px;
+    }
+}
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <h1>रजत <span>फैशन</span> पॉइंट</h1>
+      <p>RAJAT FASHION POINT • PREMIUM CLOTHING</p>
+    </div>
+    <button class="mobile-menu-btn" id="menuToggle"><i class="fas fa-bars"></i></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="#collections">Collections</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="#info">Info</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li>
+        <div class="nav-action-buttons">
+          <!-- DM Button - Opens Instagram Direct Message -->
+          <a href="https://www.instagram.com/direct/new/" target="_blank" class="dm-btn">
+            <i class="fab fa-instagram"></i> DM
+          </a>
+          <!-- WhatsApp Button - Opens WhatsApp Chat Directly -->
+          <a href="https://wa.me/919027038209?text=Hello!%20I'm%20interested%20in%20your%20premium%20collection.%20Please%20share%20more%20details." target="_blank" class="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="badge"><i class="fas fa-crown"></i> Premium Luxury Fashion</div>
+        <h1>Redefine Elegance <br> At <span>Rajat Fashion Point</span></h1>
+        <p>Experience timeless style with our exclusive collection of ethnic wear, luxury fabrics, and modern silhouettes. Where tradition meets sophistication.</p>
+        <div class="hero-buttons">
+          <a href="#collections" class="btn-primary">View Collection <i class="fas fa-arrow-right"></i></a>
+          <a href="https://maps.google.com/?cid=7636621370307002425" target="_blank" class="btn-outline"><i class="fas fa-map-marker-alt"></i> Visit Store</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.pexels.com/photos/2179214/pexels-photo-2179214.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Premium Fashion Showcase">
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Collections -->
+  <section id="collections">
+    <div class="container">
+      <h2 class="section-title">Our <span>Signature Collections</span></h2>
+      <div class="featured-grid">
+        <div class="featured-card">
+          <div class="featured-img">
+            <img src="https://images.pexels.com/photos/2121121/pexels-photo-2121121.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Royal Ethnic Wear">
+          </div>
+          <div class="featured-info">
+            <h3>Royal Ethnic Wear</h3>
+            <p>Handcrafted kurtas, sherwanis & lehengas with intricate embroidery.</p>
+          </div>
+        </div>
+        <div class="featured-card">
+          <div class="featured-img">
+            <img src="https://images.pexels.com/photos/1462637/pexels-photo-1462637.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Designer Western">
+          </div>
+          <div class="featured-info">
+            <h3>Designer Western</h3>
+            <p>Premium denim, tailored blazers & contemporary fashion.</p>
+          </div>
+        </div>
+        <div class="featured-card">
+          <div class="featured-img">
+            <img src="https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Luxury Fabrics">
+          </div>
+          <div class="featured-info">
+            <h3>Luxury Fabrics</h3>
+            <p>Pure silk, pashmina, and imported textiles for bespoke tailoring.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="new-collection">
+  <div class="container">
+    <h2>New Collection</h2>
+    <p class="subtitle">Discover the latest trends in fashion</p>
+
+    <div class="collection-grid">
+
+      <!-- Product 1 -->
+      <div class="card">
+        <div class="img-box">
+          <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab" alt="">
+          <span class="badge">New</span>
+        </div>
+        <h3>Casual Shirt</h3>
+        <p class="price">₹1,499</p>
+        <button>Buy Now</button>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="card">
+        <div class="img-box">
+          <img src="https://images.unsplash.com/photo-1503341504253-dff4815485f1" alt="">
+          <span class="badge sale">Sale</span>
+        </div>
+        <h3>Street Hoodie</h3>
+        <p class="price">₹2,199</p>
+        <button>Buy Now</button>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="card">
+        <div class="img-box">
+          <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab" alt="">
+        </div>
+        <h3>Denim Jacket</h3>
+        <p class="price">₹2,999</p>
+        <button>Buy Now</button>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="card">
+        <div class="img-box">
+          <img src="https://images.unsplash.com/photo-1516826957135-700dedea698c" alt="">
+        </div>
+        <h3>Printed T-Shirt</h3>
+        <p class="price">₹999</p>
+        <button>Buy Now</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- Store Information -->
+  <section id="info" style="background: #ffffff;">
+    <div class="container">
+      <h2 class="section-title">Visit <span>Our Atelier</span></h2>
+      <div class="info-cards">
+        <div class="info-card">
+          <i class="fas fa-location-dot"></i>
+          <h3>📍 Store Location</h3>
+          <p>FMQ3+V3F, Surya Nagar, Mathura, Uttar Pradesh 281004<br>Located inside: OM SAI INTERNET SEVA & MONEY TRANSFER SERVICE</p>
+          <a href="https://maps.google.com/?cid=7636621370307002425" target="_blank" class="btn-outline" style="display: inline-block; margin-top: 15px; font-size: 0.9rem;">Get Directions →</a>
+        </div>
+        <div class="info-card">
+          <i class="fas fa-clock"></i>
+          <h3>⏰ Opening Hours</h3>
+          <p><strong>Today:</strong> 7:04 AM – 9:04 PM<br>Open Daily · Closed after 9:04 PM</p>
+          <p><i class="fas fa-check-circle" style="color: #2b7a3e;"></i> Currently Open</p>
+        </div>
+        <div class="info-card">
+          <i class="fab fa-instagram"></i>
+          <h3>Connect With Us</h3>
+          <p>DM us for styling advice, bookings & exclusive offers</p>
+          <a href="https://www.instagram.com/direct/new/" target="_blank" class="dm-btn" style="display: inline-flex; margin-top: 12px; background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);">
+            <i class="fab fa-instagram"></i> DM on Instagram
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="main-section">
+    <div class="brand-container">
+
+        <div class="brand-content">
+            <h1>New Season Collection</h1>
+            <p>Upgrade your style with our latest premium outfits. Designed for comfort, built for confidence.</p>
+            <button class="shop-btn">Shop Now</button>
+        </div>
+
+        <div class="brand-image">
+            <img src="https://images.unsplash.com/photo-1521336575822-6da63fb45455" alt="Fashion Model">
+        </div>
+
+    </div>
+</section>
+
+  <!-- Instagram Connect & WhatsApp Section -->
+  <div class="container">
+    <div class="social-row">
+      <h3 style="margin-bottom: 12px;">Join the #RajatFashion Community</h3>
+      <a href="https://www.instagram.com/rajatfashionpoint/" target="_blank" class="insta-link"><i class="fab fa-instagram"></i> Follow @rajatfashionpoint</a>
+      <p style="margin-top: 20px;">Share your style & get featured on our premium lookbook</p>
+      <div style="margin-top: 20px;">
+        <!-- WhatsApp Button with Pre-filled Message -->
+        <a href="https://wa.me/919027038209?text=Hello!%20I'm%20interested%20in%20your%20premium%20collection.%20Please%20share%20more%20details." target="_blank" class="whatsapp-btn" style="background: #25d366; display: inline-flex; gap: 8px; padding: 10px 28px; text-decoration: none; border-radius: 40px; color: white;">
+          <i class="fab fa-whatsapp"></i> Chat on WhatsApp: +91 9027038209
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Google Map -->
+  <div class="container map-container">
+    <iframe 
+      width="100%" 
+      height="400" 
+      style="border:0; display: block;" 
+      loading="lazy" 
+      allowfullscreen 
+      referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Rajat+Fashion+Point+Mathura&center=27.489687,77.652679&zoom=17">
+    </iframe>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p><strong>रजत फैशन पॉइंट | Rajat Fashion Point</strong> — Premium Clothing Store, Mathura</p>
+    <p>📍 Surya Nagar, Mathura, UP 281004 | 🕒 7:04 AM – 9:04 PM</p>
+    <p>
+      <a href="https://www.instagram.com/rajatfashionpoint/" target="_blank" style="color: #ddd2ca; margin: 0 10px; text-decoration: none;"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href="https://wa.me/919027038209?text=Hello!%20I'm%20interested%20in%20your%20collection." target="_blank" style="color: #ddd2ca; margin: 0 10px; text-decoration: none;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    </p>
+    <p style="margin-top: 18px;">© 2025 Rajat Fashion Point — Redefining Style Since Years</p>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  if(menuBtn) {
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  }
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href').substring(1);
+      if(targetId && document.getElementById(targetId)) {
+        e.preventDefault();
+        document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+        if(navLinks.classList.contains('show')) navLinks.classList.remove('show');
+      }
+    });
+  });
+
+  // Active nav highlight on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navItems = document.querySelectorAll('.nav-links > li > a:not(.nav-action-buttons a)');
+  
+  window.addEventListener('scroll', () => {
+    let current = '';
+    const scrollPos = window.scrollY + 120;
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+        current = section.getAttribute('id');
+      }
+    });
+    navItems.forEach(link => {
+      link.classList.remove('active');
+      const href = link.getAttribute('href').substring(1);
+      if (href === current) {
+        link.classList.add('active');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

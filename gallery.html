@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery | Rajat Fashion Point - Premium Collection</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fefaf7;
+    }
+    
+    /* Navbar with DM & WhatsApp Buttons - Same as Homepage */
+    .navbar {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #f0e2d8;
+      padding: 14px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .logo h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+    }
+    .logo h1 span {
+      color: #c76b4a;
+    }
+    .logo p {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #7a5a4a;
+    }
+    .nav-links {
+      display: flex;
+      gap: 34px;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #2d2d2d;
+      transition: 0.2s;
+      font-size: 1rem;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: #c76b4a;
+    }
+    
+    /* DM & WhatsApp Button Styles */
+    .nav-action-buttons {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-left: 20px;
+    }
+    .dm-btn, .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+    .dm-btn {
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      background-size: 200% 200%;
+      color: white;
+    }
+    .dm-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(131, 58, 180, 0.3);
+      background-position: right center;
+    }
+    .whatsapp-btn {
+      background: #25d366;
+      color: white;
+    }
+    .whatsapp-btn:hover {
+      background: #20b859;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+    
+    .gallery-hero {
+      background: linear-gradient(115deg, #f7ede6, #f3e2d6);
+      padding: 60px 0 40px;
+      text-align: center;
+    }
+    .gallery-hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+    }
+    .gallery-hero h1 span {
+      color: #c76b4a;
+    }
+    .gallery-hero p {
+      color: #4f3e34;
+      margin-top: 12px;
+    }
+    
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 35px;
+      margin: 60px 0;
+    }
+    .gallery-item {
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      background: white;
+    }
+    .gallery-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.2);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+    .gallery-caption {
+      padding: 20px;
+      text-align: center;
+    }
+    .gallery-caption h3 {
+      font-size: 1.3rem;
+      margin-bottom: 6px;
+      color: #2b241f;
+    }
+    .gallery-caption p {
+      color: #6b4e3c;
+    }
+    
+    footer {
+      background: #1e1916;
+      color: #ddd2ca;
+      text-align: center;
+      padding: 40px 0;
+      margin-top: 40px;
+    }
+    
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 0 10px;
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .mobile-menu-btn {
+        display: block;
+      }
+      .nav-action-buttons {
+        margin-left: 0;
+        justify-content: center;
+        margin-top: 10px;
+      }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      .gallery-hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <h1>रजत <span>फैशन</span> पॉइंट</h1>
+      <p>PREMIUM CLOTHING STORE</p>
+    </div>
+    <button class="mobile-menu-btn" id="menuToggleGal"><i class="fas fa-bars"></i></button>
+    <ul class="nav-links" id="navLinksGal">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#collections">Collections</a></li>
+      <li><a href="gallery.html" class="active">Gallery</a></li>
+      <li><a href="index.html#info">Info</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li>
+        <div class="nav-action-buttons">
+          <!-- DM Button - Opens Instagram Direct Message -->
+          <a href="https://www.instagram.com/direct/new/" target="_blank" class="dm-btn">
+            <i class="fab fa-instagram"></i> DM
+          </a>
+          <!-- WhatsApp Button - Opens WhatsApp Chat Directly -->
+          <a href="https://wa.me/919027038209?text=Hello!%20I'm%20interested%20in%20your%20premium%20collection.%20Please%20share%20more%20details." target="_blank" class="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+          </a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="gallery-hero">
+    <div class="container">
+      <h1>Our <span>Premium Lookbook</span></h1>
+      <p>Discover timeless elegance — each piece tells a story of craftsmanship and luxury.</p>
+    </div>
+  </div>
+
+  <div class="container gallery-grid">
+    <div class="gallery-item">
+      <img src="https://images.pexels.com/photos/2892330/pexels-photo-2892330.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Designer Sherwani">
+      <div class="gallery-caption">
+        <h3>Royal Sherwani</h3>
+        <p>Handcrafted with intricate zari work</p>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.pexels.com/photos/3768919/pexels-photo-3768919.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Lehenga Collection">
+      <div class="gallery-caption">
+        <h3>Bridal Lehenga</h3>
+        <p>Luxury silk & thread embroidery</p>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.pexels.com/photos/157675/fashion-men-s-indian-model-157675.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Men Ethnic">
+      <div class="gallery-caption">
+        <h3>Men's Ethnic</h3>
+        <p>Kurta sets & dhoti pants</p>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.pexels.com/photos/1462637/pexels-photo-1462637.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Western Blazer">
+      <div class="gallery-caption">
+        <h3>Premium Blazers</h3>
+        <p>Italian fabrics & tailored fit</p>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Silk Saree">
+      <div class="gallery-caption">
+        <h3>Banarasi Silk</h3>
+        <p>Pure silk sarees collection</p>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.pexels.com/photos/2121121/pexels-photo-2121121.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Accessories">
+      <div class="gallery-caption">
+        <h3>Statement Jewelry</h3>
+        <p>Handcrafted accessories</p>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.pexels.com/photos/2179214/pexels-photo-2179214.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Fashion Showcase">
+      <div class="gallery-caption">
+        <h3>Modern Ethnic</h3>
+        <p>Contemporary fusion wear</p>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.pexels.com/photos/6334093/pexels-photo-6334093.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Fabric Details">
+      <div class="gallery-caption">
+        <h3>Premium Fabrics</h3>
+        <p>Imported & handwoven textiles</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Rajat Fashion Point — Timeless Style, Premium Quality</p>
+    <p style="margin-top: 10px;">
+      <i class="fab fa-instagram"></i> @rajatfashionpoint | 
+      <i class="fab fa-whatsapp"></i> +91 9027038209 | 
+      Surya Nagar, Mathura
+    </p>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuToggleGal');
+    const navLinks = document.getElementById('navLinksGal');
+    if(menuBtn) {
+      menuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+      });
+    }
+  </script>
+</body>
+</html>

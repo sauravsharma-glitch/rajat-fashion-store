@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Rajat Fashion Point - Premium Clothing Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fefaf7;
+    }
+    
+    /* Navbar with DM & WhatsApp Buttons - Same as Homepage */
+    .navbar {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #f0e2d8;
+      padding: 14px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .logo h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+    }
+    .logo h1 span {
+      color: #c76b4a;
+    }
+    .logo p {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #7a5a4a;
+    }
+    .nav-links {
+      display: flex;
+      gap: 34px;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #2d2d2d;
+      transition: 0.2s;
+      font-size: 1rem;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: #c76b4a;
+    }
+    
+    /* DM & WhatsApp Button Styles */
+    .nav-action-buttons {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-left: 20px;
+    }
+    .dm-btn, .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+    .dm-btn {
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      background-size: 200% 200%;
+      color: white;
+    }
+    .dm-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(131, 58, 180, 0.3);
+      background-position: right center;
+    }
+    .whatsapp-btn {
+      background: #25d366;
+      color: white;
+    }
+    .whatsapp-btn:hover {
+      background: #20b859;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+    .contact-hero {
+      background: linear-gradient(115deg, #f7ede6, #f3e2d6);
+      padding: 60px 0 40px;
+      text-align: center;
+    }
+    .contact-hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+    }
+    .contact-hero h1 span {
+      color: #c76b4a;
+    }
+    .contact-hero p {
+      color: #4f3e34;
+      margin-top: 12px;
+    }
+    .contact-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 48px;
+      margin: 60px 0;
+      background: white;
+      border-radius: 40px;
+      overflow: hidden;
+      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.08);
+    }
+    .contact-info {
+      flex: 1;
+      background: linear-gradient(135deg, #2b241f, #3a2c24);
+      padding: 48px;
+      color: white;
+    }
+    .contact-info h3 {
+      font-size: 1.8rem;
+      margin-bottom: 24px;
+      font-weight: 700;
+    }
+    .contact-detail {
+      display: flex;
+      gap: 18px;
+      margin-bottom: 28px;
+      align-items: center;
+    }
+    .contact-detail i {
+      font-size: 1.5rem;
+      color: #e09d7c;
+      width: 40px;
+    }
+    .contact-detail p {
+      line-height: 1.4;
+    }
+    .contact-form {
+      flex: 1.2;
+      padding: 48px;
+      background: white;
+    }
+    .contact-form h3 {
+      font-size: 1.5rem;
+      margin-bottom: 24px;
+      color: #2b241f;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1.5px solid #eee2da;
+      border-radius: 24px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      transition: 0.2s;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #c76b4a;
+      box-shadow: 0 0 0 3px rgba(199, 107, 74, 0.1);
+    }
+    .submit-btn {
+      background: #c76b4a;
+      color: white;
+      border: none;
+      padding: 14px 36px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .submit-btn:hover {
+      background: #a95538;
+      transform: translateY(-2px);
+    }
+    .map-container {
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.1);
+      margin: 40px 0;
+    }
+    .social-row {
+      text-align: center;
+      background: #f7ede6;
+      border-radius: 48px;
+      padding: 40px 20px;
+      margin: 40px 0;
+    }
+    .insta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #2c2c2c;
+      padding: 12px 32px;
+      border-radius: 60px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: 0.2s;
+    }
+    .insta-link:hover {
+      background: #c13584;
+      transform: scale(1.02);
+    }
+    footer {
+      background: #1e1916;
+      color: #ddd2ca;
+      text-align: center;
+      padding: 40px 0;
+    }
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 0 10px;
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .mobile-menu-btn {
+        display: block;
+      }
+      .nav-action-buttons {
+        margin-left: 0;
+        justify-content: center;
+        margin-top: 10px;
+      }
+      .contact-wrapper {
+        flex-direction: column;
+      }
+      .contact-info, .contact-form {
+        padding: 32px 24px;
+      }
+      .contact-hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <h1>रजत <span>फैशन</span> पॉइंट</h1>
+      <p>PREMIUM CLOTHING STORE</p>
+    </div>
+    <button class="mobile-menu-btn" id="menuToggleCon"><i class="fas fa-bars"></i></button>
+    <ul class="nav-links" id="navLinksCon">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#collections">Collections</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="index.html#info">Info</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+      <li>
+        <div class="nav-action-buttons">
+          <!-- DM Button - Opens Instagram Direct Message -->
+          <a href="https://www.instagram.com/direct/new/" target="_blank" class="dm-btn">
+            <i class="fab fa-instagram"></i> DM
+          </a>
+          <!-- WhatsApp Button - Opens WhatsApp Chat Directly -->
+          <a href="https://wa.me/919027038209?text=Hello!%20I'm%20interested%20in%20your%20premium%20collection.%20Please%20share%20more%20details." target="_blank" class="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+          </a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="contact-hero">
+    <div class="container">
+      <h1>Connect With <span>Luxury</span></h1>
+      <p>We'd love to hear from you — style consultations, bulk orders, or just a visit.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="contact-wrapper">
+      <div class="contact-info">
+        <h3>Visit Our Store</h3>
+        <div class="contact-detail">
+          <i class="fas fa-map-marker-alt"></i>
+          <p>FMQ3+V3F, Surya Nagar, Mathura,<br>Uttar Pradesh 281004, India</p>
+        </div>
+        <div class="contact-detail">
+          <i class="fas fa-store"></i>
+          <p>Located inside: OM SAI INTERNET SEVA & MONEY TRANSFER SERVICE</p>
+        </div>
+        <div class="contact-detail">
+          <i class="fas fa-clock"></i>
+          <p>Mon - Sun: 7:04 AM – 9:04 PM<br>Open Daily</p>
+        </div>
+        <div class="contact-detail">
+          <i class="fab fa-instagram"></i>
+          <p>@rajatfashionpoint</p>
+        </div>
+        <div class="contact-detail">
+          <i class="fab fa-whatsapp"></i>
+          <p>+91 9027038209</p>
+        </div>
+        <div style="margin-top: 30px;">
+          <a href="https://maps.google.com/?cid=7636621370307002425" target="_blank" style="color: #e09d7c; font-weight: 600;">Get Directions →</a>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>Send a Message</h3>
+        <form action="#" method="post" id="contactForm">
+          <div class="form-group">
+            <input type="text" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Email Address" required>
+          </div>
+          <div class="form-group">
+            <input type="tel" placeholder="Phone Number">
+          </div>
+          <div class="form-group">
+            <textarea rows="4" placeholder="Tell us about your style preference or inquiry..."></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Send Inquiry <i class="fas fa-paper-plane"></i></button>
+        </form>
+        <p style="margin-top: 20px; font-size: 0.85rem; color: #6b4e3c;"><i class="fas fa-check-circle"></i> We'll respond within 24 hours</p>
+      </div>
+    </div>
+
+    <!-- Google Map -->
+    <div class="map-container">
+      <iframe 
+        width="100%" 
+        height="400" 
+        style="border:0; display: block;" 
+        loading="lazy" 
+        allowfullscreen 
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Rajat+Fashion+Point+Mathura&center=27.489687,77.652679&zoom=17">
+      </iframe>
+    </div>
+
+    <!-- Social Connect with WhatsApp -->
+    <div class="social-row">
+      <h3 style="margin-bottom: 12px;">Follow Us for Latest Arrivals</h3>
+      <a href="https://www.instagram.com/rajatfashionpoint/" target="_blank" class="insta-link"><i class="fab fa-instagram"></i> @rajatfashionpoint</a>
+      <p style="margin-top: 20px;">Share your style with #RajatFashionPoint and get featured!</p>
+      <div style="margin-top: 20px;">
+        <a href="https://wa.me/919027038209?text=Hello!%20I'm%20interested%20in%20your%20premium%20collection.%20Please%20share%20more%20details." target="_blank" class="whatsapp-btn" style="background: #25d366; display: inline-flex; gap: 8px; padding: 10px 28px; text-decoration: none; border-radius: 40px; color: white;">
+          <i class="fab fa-whatsapp"></i> Chat on WhatsApp: +91 9027038209
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Rajat Fashion Point — Redefining Style Since Years</p>
+    <p style="margin-top: 8px;">
+      <i class="fas fa-map-marker-alt"></i> Surya Nagar, Mathura, Uttar Pradesh 281004 | 
+      <i class="fab fa-whatsapp"></i> +91 9027038209
+    </p>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuToggleCon');
+    const navLinks = document.getElementById('navLinksCon');
+    if(menuBtn) {
+      menuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+      });
+    }
+
+    // Simple form submission alert
+    const form = document.getElementById('contactForm');
+    if(form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Thank you for reaching out! We will get back to you soon.');
+        form.reset();
+      });
+    }
+  </script>
+</body>
+</html>
